@@ -14,9 +14,6 @@ print('Mode:', dataFrame_underFiveDeaths.mode())
 print('Assimetria:', dataFrame_underFiveDeaths.skew())
 print('Curtose:', dataFrame_underFiveDeaths.kurtosis())
 
-
-
-
 figures, axis = pyplot.subplots(1,2)
 
 axis[0].hist(dataFrame_underFiveDeaths, bins=30, edgecolor='black')
