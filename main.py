@@ -5,6 +5,7 @@ dataFrame_lifeExpectancy_raw = pandas.read_csv('life_expectancy.csv', delimiter=
 dataFrame_lifeExpectancy = dataFrame_lifeExpectancy_raw[["Country","Region","Year","Economy_status_Developed","Under_five_deaths"]]
 
 dataFrame_underFiveDeaths = dataFrame_lifeExpectancy["Under_five_deaths"]
+
 #Imprime a tabela estatistica da variavel
 print(dataFrame_underFiveDeaths.describe())
 print('Amplitude:', dataFrame_underFiveDeaths.max() - dataFrame_underFiveDeaths.min())
@@ -16,11 +17,14 @@ print('Curtose:', dataFrame_underFiveDeaths.kurtosis())
 
 figures, axis = pyplot.subplots(1,2)
 
-axis[0].hist(dataFrame_underFiveDeaths, bins=30, edgecolor='black')
+counts, bins, _ = axis[0].hist(dataFrame_underFiveDeaths, bins=40, edgecolor='black')
+
+print("Classes do histograma: ",bins)
+print("Contagem das Classes: ",counts)
+
 axis[0].set_title('Histograma de Mortes antes dos 5 anos por 1.000 pessoas')
 axis[0].set_xlabel('Morte antes dos 5 anos por 1.000 pessoas')
 axis[0].set_ylabel('Frequência')
-
 axis[0].axvline(dataFrame_underFiveDeaths.mean(),color="red",label="Média")
 axis[0].axvline(dataFrame_underFiveDeaths.median(),color="blue",label="Mediana")
 axis[0].legend(loc="upper right")
